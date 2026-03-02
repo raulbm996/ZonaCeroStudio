@@ -608,6 +608,9 @@ img {
   text-align: center;
   position: relative;
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .product-card:hover {
@@ -638,6 +641,11 @@ img {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   display: block;
+}
+
+.btn-add-cart {
+  width: 100%;
+  margin-top: auto;
 }
 
 /* Time Grid Styles */
@@ -681,10 +689,6 @@ img {
   color: var(--bg-primary);
   border-color: var(--accent-primary);
   font-weight: 600;
-}
-
-.btn-add-cart {
-  width: 100%;
 }
 
 /* Cart Sidebar */
