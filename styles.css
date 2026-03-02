@@ -1006,6 +1006,7 @@ img {
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-auto-rows: 1fr;
   gap: 2.5rem;
   margin-top: 3rem;
 }
@@ -1017,6 +1018,9 @@ img {
   border: 1px solid var(--border-color);
   transition: var(--transition);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .team-card:hover {
