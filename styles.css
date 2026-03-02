@@ -541,6 +541,7 @@ img {
   font-weight: 600;
   font-family: var(--font-heading);
   font-size: 1.1rem;
+  white-space: nowrap;
 }
 
 .service-menu-details {
