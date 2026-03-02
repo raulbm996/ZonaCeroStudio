@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia | Zona Cero Studio</title>
+    <meta name="description"
+        content="Conoce la historia de Zona Cero Studio, nuestra dedicación a la barbería clásica y nuestro compromiso con el estilo masculino.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FontAwesome Core -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <nav class="nav-links left-links">
+                <a href="index.html#inicio">Inicio</a>
+                <a href="historia.html" class="active">Historia</a>
+                <a href="nosotros.html">Nosotros</a>
+            </nav>
+
+            <a href="index.html" class="logo center-logo">
+                <img src="assets/images/logo-removebg-preview.png" alt="Zona Cero Studio Logo" id="navbar-logo"
+                    onerror="this.src=''; this.alt='ZONA CERO'">
+            </a>
+
+            <div class="right-nav-group">
+                <nav class="nav-links right-links">
+                    <a href="index.html#servicios">Servicios</a>
+                    <a href="productos.html">Productos</a>
+                    <a href="index.html#contacto">Contacto</a>
+                </nav>
+                <div class="nav-actions">
+                    <button class="cart-toggle" id="cartToggle">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <nav class="mobile-links">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="historia.html">Historia</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="nosotros.html">Nosotros</a>
+
+            <a href="index.html#productos">Productos</a>
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart-msg">Tu carrito está vacío</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalValue">0.00€</span>
+            </div>
+            <button class="btn btn-primary w-100" id="checkoutBtn">Comprar por WhatsApp</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header"
+        style="padding-top: 160px; padding-bottom: 60px; text-align: center; background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <span class="section-subtitle">NUESTRAS RAÍCES</span>
+            <h1 class="section-title" style="margin-bottom: 0;">Nuestra <span>Historia</span></h1>
+        </div>
+    </section>
+
+    <!-- History Content Section -->
+    <section class="history-content section-padding">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+
+            <div class="history-block" style="margin-bottom: 3rem;">
+                <p class="section-text" style="text-align: left; margin-bottom: 1.5rem;">
+                    <strong>Zona Cero Studio</strong> nació en Sevilla con una visión muy clara: redefinir la barbería
+                    clásica para el hombre moderno. Desde que abrimos nuestras puertas, hemos concebido el cuidado
+                    personal no como una obligación o rutina, sino como un verdadero ritual de desconexión y una forma
+                    de expresar tu propia identidad.
+                </p>
+                <p class="section-text" style="text-align: left;">
+                    Nuestro fundador, con años de experiencia perfeccionando su técnica en distintos puntos del país,
+                    sentía que faltaba un espacio donde la atención al detalle fuese el estándar y no la excepción. Un
+                    lugar donde no solo vinieras a cortarte el cabello, sino a vivir una experiencia inmersiva desde el
+                    momento en el que cruzas la puerta.
+                </p>
+            </div>
+
+            <!-- Image placeholder (styled nicely) -->
+            <div class="history-image"
+                style="width: 100%; height: 400px; background-color: var(--bg-tertiary); border-radius: var(--border-radius-lg); margin: 3rem 0; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border: 1px solid var(--border-color);">
+                <i class="fa-solid fa-scissors"
+                    style="font-size: 4rem; color: var(--accent-light); position: absolute;"></i>
+                <div style="z-index: 1; text-align: center;">
+                    <span
+                        style="display: block; font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-muted);">Est.
+                        2026</span>
+                </div>
+            </div>
+
+            <div class="history-block" style="margin-bottom: 3rem;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text-main);">Artesanía y Vanguardia
+                </h3>
+                <p class="section-text" style="text-align: left; margin-bottom: 1.5rem;">
+                    Desde la selección de nuestros productos premium —diseñados específicamente para las necesidades del
+                    cabello y la barba masculina— hasta la ambientación, la música y la acústica de nuestro local, todo
+                    ha sido cuidadosamente orquestado para satisfacer a los clientes más exigentes.
+                </p>
+                <p class="section-text" style="text-align: left;">
+                    Hoy nos enorgullece contar con un equipo de profesionales verdaderamente apasionados por su oficio.
+                    Cada barbero en Zona Cero Studio aporta su propio estilo único, pero todos compartimos la misma
+                    filosofía: la búsqueda incesante de la perfección en cada corte, degradado y arreglo de barba.
+                </p>
+            </div>
+
+            <div class="history-block"
+                style="padding: 2rem; background-color: var(--bg-secondary); border-radius: var(--border-radius); text-align: center; border-left: 4px solid var(--accent-primary);">
+                <p
+                    style="font-family: var(--font-heading); font-size: 1.2rem; font-style: italic; color: var(--text-main);">
+                    "Nuestra mayor recompensa es la confianza de los clientes que nos eligen día tras día y salen de
+                    nuestro estudio con una versión renovada de sí mismos."
+                </p>
+            </div>
+
+            <div class="text-center mt-4" style="margin-top: 4rem;">
+                <a href="index.html#servicios" class="btn btn-primary" style="margin-right: 1rem;">Nuestros
+                    Servicios</a>
+                <a href="index.html" class="btn btn-outline">Volver al Inicio</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-logo">ZONA CERO STUDIO</div>
+                <p>&copy; 2026 Zona Cero Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

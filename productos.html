@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Zona Cero Studio</title>
+    <meta name="description"
+        content="Compra nuestros productos premium para el cuidado del cabello y la barba. Lleva el estilo de Zona Cero Studio a casa.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FontAwesome Core -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <nav class="nav-links left-links">
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="index.html#nosotros">Nosotros</a>
+            </nav>
+
+            <a href="index.html" class="logo center-logo">
+                <img src="assets/images/logo-removebg-preview.png" alt="Zona Cero Studio Logo" id="navbar-logo"
+                    onerror="this.src=''; this.alt='ZONA CERO'">
+            </a>
+
+            <div class="right-nav-group">
+                <nav class="nav-links right-links">
+                    <a href="index.html#contacto">Contacto</a>
+                    <a href="productos.html" class="active">Productos</a>
+                </nav>
+                <div class="nav-actions">
+                    <a href="reservar.html" class="btn btn-primary"
+                        style="padding: 0.4rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; white-space: nowrap;">Reservar</a>
+                    <button class="cart-toggle" id="cartToggle">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <nav class="mobile-links">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <a href="index.html#contacto">Contacto</a>
+            <a href="productos.html">Productos</a>
+            <a href="reservar.html" class="btn btn-primary" style="margin-top: 1rem; text-align: center;">Reservar
+                Cita</a>
+        </nav>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart-msg">Tu carrito está vacío</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalValue">0.00€</span>
+            </div>
+            <button class="btn btn-primary w-100" id="checkoutBtn">Comprar por WhatsApp</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header"
+        style="padding-top: 160px; padding-bottom: 60px; text-align: center; background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <span class="section-subtitle">LLEVA EL ESTILO A CASA</span>
+            <h1 class="section-title" style="margin-bottom: 0;">Nuestros <span>Productos</span></h1>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section class="store section-padding" id="productos">
+        <div class="container">
+            <div class="store-grid" id="productStore">
+                <!-- Products injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-logo">ZONA CERO STUDIO</div>
+                <p>&copy; 2026 Zona Cero Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

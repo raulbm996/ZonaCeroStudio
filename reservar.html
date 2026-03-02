@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Cita | Zona Cero Studio</title>
+    <meta name="description"
+        content="Reserva tu cita en Zona Cero Studio. Elige tu servicio, tu barbero y asegura tu lugar.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FontAwesome Core -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .booking-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-tertiary);
+            padding: 3rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(203, 163, 101, 0.2);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f4f4f5' d='M10.293 3.293 6 7.586 1.707 3.293A1 1 0 0 0 .293 4.707l5 5a1 1 0 0 0 1.414 0l5-5a1 1 0 1 0-1.414-1.414z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        .booking-btn {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .booking-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <nav class="nav-links left-links">
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="index.html#nosotros">Nosotros</a>
+            </nav>
+
+            <a href="index.html" class="logo center-logo">
+                <img src="assets/images/logo-removebg-preview.png" alt="Zona Cero Studio Logo" id="navbar-logo"
+                    onerror="this.src=''; this.alt='ZONA CERO'">
+            </a>
+
+            <div class="right-nav-group">
+                <nav class="nav-links right-links">
+                    <a href="index.html#contacto">Contacto</a>
+                    <a href="productos.html">Productos</a>
+                </nav>
+                <div class="nav-actions">
+                    <a href="reservar.html" class="btn btn-primary"
+                        style="padding: 0.4rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; white-space: nowrap;">Reservar</a>
+                    <button class="cart-toggle" id="cartToggle">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <nav class="mobile-links">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <a href="index.html#contacto">Contacto</a>
+            <a href="productos.html">Productos</a>
+            <a href="reservar.html" class="btn btn-primary" style="margin-top: 1rem; text-align: center;">Reservar
+                Cita</a>
+        </nav>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <!-- same cart sidebar code -->
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart-msg">Tu carrito está vacío</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalValue">0.00€</span>
+            </div>
+            <button class="btn btn-primary w-100" id="checkoutBtn">Comprar por WhatsApp</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header"
+        style="padding-top: 160px; padding-bottom: 60px; text-align: center; background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <span class="section-subtitle">ASEGURA TU LUGAR</span>
+            <h1 class="section-title" style="margin-bottom: 0;">Reserva tu <span>Cita</span></h1>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section section-padding">
+        <div class="container">
+            <div class="booking-container">
+                <form id="bookingForm" action="javascript:void(0);">
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">Nombre Completo</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="tel" id="telefono" class="form-control" placeholder="Tu número de teléfono"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicio" class="form-label">Servicio</label>
+                        <select id="servicio" class="form-control" required>
+                            <option value="" disabled selected>Selecciona un servicio</option>
+                            <option value="Corte, lavado y peinado">Corte, lavado y peinado (12.00 €)</option>
+                            <option value="Corte y barba, lavado y peinado">Corte y barba, lavado y peinado (14.00 €)
+                            </option>
+                            <option value="Tinte, corte, lavado y peinado">Tinte, corte, lavado y peinado</option>
+                            <option value="Mechas, corte, lavado y peinado">Mechas, corte, lavado y peinado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="barbero" class="form-label">Barbero (Opcional)</label>
+                        <select id="barbero" class="form-control">
+                            <option value="Cualquiera">Cualquiera</option>
+                            <option value="Fernando Salguero">Fernando Salguero</option>
+                            <option value="Sergio Marín">Sergio Marín</option>
+                            <option value="Daniel Mondéjar">Daniel Mondéjar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha" class="form-label">Fecha Preferida</label>
+                        <input type="date" id="fecha" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Hora Preferida</label>
+                        <div class="time-section">
+                            <span class="time-period-label">Por la mañana:</span>
+                            <div class="time-grid">
+                                <button type="button" class="time-slot" data-time="10:00">10:00</button>
+                                <button type="button" class="time-slot" data-time="10:40">10:40</button>
+                                <button type="button" class="time-slot" data-time="11:20">11:20</button>
+                                <button type="button" class="time-slot" data-time="12:00">12:00</button>
+                                <button type="button" class="time-slot" data-time="12:40">12:40</button>
+                                <button type="button" class="time-slot" data-time="13:20">13:20</button>
+                            </div>
+                        </div>
+                        <div class="time-section" style="margin-top: 1rem;">
+                            <span class="time-period-label">Por la tarde:</span>
+                            <div class="time-grid">
+                                <button type="button" class="time-slot" data-time="15:00">15:00</button>
+                                <button type="button" class="time-slot" data-time="15:40">15:40</button>
+                                <button type="button" class="time-slot" data-time="16:00">16:00</button>
+                                <button type="button" class="time-slot" data-time="16:20">16:20</button>
+                                <button type="button" class="time-slot" data-time="16:40">16:40</button>
+                                <button type="button" class="time-slot" data-time="17:00">17:00</button>
+                                <button type="button" class="time-slot" data-time="17:20">17:20</button>
+                                <button type="button" class="time-slot" data-time="17:40">17:40</button>
+                                <button type="button" class="time-slot" data-time="18:00">18:00</button>
+                                <button type="button" class="time-slot" data-time="18:20">18:20</button>
+                                <button type="button" class="time-slot" data-time="18:40">18:40</button>
+                                <button type="button" class="time-slot" data-time="19:00">19:00</button>
+                                <button type="button" class="time-slot" data-time="19:20">19:20</button>
+                                <button type="button" class="time-slot" data-time="19:40">19:40</button>
+                                <button type="button" class="time-slot" data-time="20:20">20:20</button>
+                            </div>
+                        </div>
+                        <input type="hidden" id="hora" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary booking-btn" onclick="submitBooking()">Confirmar
+                        Reserva</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-logo">ZONA CERO STUDIO</div>
+                <p>&copy; 2026 Zona Cero Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        function submitBooking() {
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const servicio = document.getElementById('servicio').value;
+            const barbero = document.getElementById('barbero').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+
+            // HTML5 validation will catch standard inputs, but we must manually check the hidden input
+            if (!hora) {
+                alert("Por favor, selecciona una hora preferida.");
+                return;
+            }
+
+            if (!nombre || !telefono || !servicio || !fecha) {
+                return;
+            }
+
+            const mensaje = `¡Hola! Me gustaría reservar una cita.%0A%0A*Detalles de la reserva:*%0A- Nombre: ${nombre}%0A- Teléfono: ${telefono}%0A- Servicio: ${servicio}%0A- Barbero: ${barbero}%0A- Fecha: ${fecha}%0A- Hora: ${hora}%0A%0A¿Tienen disponibilidad?`;
+
+            window.open(`https://wa.me/34600000000?text=${mensaje}`, '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('fecha').setAttribute('min', today);
+
+            // Handle time slot selection
+            const timeSlots = document.querySelectorAll('.time-slot');
+            const horaInput = document.getElementById('hora');
+
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', () => {
+                    // Remove selected visual state from all
+                    timeSlots.forEach(s => s.classList.remove('selected'));
+                    // Add selected visual state to clicked
+                    slot.classList.add('selected');
+                    // Set hidden input
+                    horaInput.value = slot.dataset.time;
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

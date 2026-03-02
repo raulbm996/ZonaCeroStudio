@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Zona Cero Studio</title>
+    <meta name="description"
+        content="Conoce al equipo de Zona Cero Studio. Nuestros barberos expertos están listos para elevar tu estilo.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FontAwesome Core -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background-color: var(--bg-tertiary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .team-info {
+            padding: 2rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--accent-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .team-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        @media (max-width: 768px) {
+            .team-card {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <nav class="nav-links left-links">
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="nosotros.html" class="active">Nosotros</a>
+            </nav>
+
+            <a href="index.html" class="logo center-logo">
+                <img src="assets/images/logo-removebg-preview.png" alt="Zona Cero Studio Logo" id="navbar-logo"
+                    onerror="this.src=''; this.alt='ZONA CERO'">
+            </a>
+
+            <div class="right-nav-group">
+                <nav class="nav-links right-links">
+                    <a href="index.html#contacto">Contacto</a>
+                    <a href="productos.html">Productos</a>
+                </nav>
+                <div class="nav-actions">
+                    <a href="reservar.html" class="btn btn-primary"
+                        style="padding: 0.4rem 1rem; font-size: 0.85rem; margin-right: 0.5rem; white-space: nowrap;">Reservar</a>
+                    <button class="cart-toggle" id="cartToggle">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <nav class="mobile-links">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="index.html#contacto">Contacto</a>
+            <a href="productos.html">Productos</a>
+            <a href="reservar.html" class="btn btn-primary" style="margin-top: 1rem; text-align: center;">Reservar
+                Cita</a>
+        </nav>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <!-- same cart sidebar code -->
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart-msg">Tu carrito está vacío</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalValue">0.00€</span>
+            </div>
+            <button class="btn btn-primary w-100" id="checkoutBtn">Comprar por WhatsApp</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header"
+        style="padding-top: 160px; padding-bottom: 60px; text-align: center; background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <span class="section-subtitle">EL EQUIPO</span>
+            <h1 class="section-title" style="margin-bottom: 0;">Nuestros <span>Barberos</span></h1>
+        </div>
+    </section>
+
+    <!-- Team Content Section -->
+    <section class="team-content section-padding">
+        <div class="container">
+            <div class="text-center" style="max-width: 700px; margin: 0 auto 3rem;">
+                <p class="section-text" style="color: var(--text-main);">
+                    En Zona Cero Studio contamos con un equipo de 3 barberos apasionados por su oficio. Cada uno aporta
+                    su propio estilo único, pero todos compartimos la misma filosofía: la búsqueda incesante de la
+                    perfección en cada corte.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Fernando -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="assets/images/fernando.jpg" alt="Fernando Salguero - CEO & Master Barber"
+                            onerror="this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fa-solid fa-scissors"
+                            style="font-size: 5rem; color: var(--accent-light); display: none;"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Fernando Salguero</h3>
+                        <p class="team-desc">Fundador y Dueño de Zona Cero Studio.</p>
+                    </div>
+                </div>
+
+                <!-- Sergio -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="assets/images/sergio.jpg" alt="Sergio Marín - Estilista Clásico"
+                            onerror="this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fa-solid fa-user-tie"
+                            style="font-size: 5rem; color: var(--accent-light); display: none;"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Sergio Marín</h3>
+
+                    </div>
+                </div>
+
+                <!-- Daniel -->
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="assets/images/daniel.jpg" alt="Daniel Mondéjar - Especialista en Degradados"
+                            onerror="this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fa-solid fa-fire"
+                            style="font-size: 5rem; color: var(--accent-light); display: none;"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Daniel Mondéjar</h3>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4" style="margin-top: 4rem;">
+                <a href="reservar.html" class="btn btn-primary" style="margin-right: 1rem;">Reservar Cita</a>
+                <a href="index.html" class="btn btn-outline">Volver al Inicio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-logo">ZONA CERO STUDIO</div>
+                <p>&copy; 2026 Zona Cero Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
